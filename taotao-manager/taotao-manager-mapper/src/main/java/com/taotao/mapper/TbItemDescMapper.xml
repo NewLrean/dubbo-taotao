@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.taotao.mapper.TbItemDescMapper" >
+  <insert id="saveTbItemDesc" parameterType="com.taotao.pojo.TbItemDesc">
+  	insert into tb_item_desc(itemId,itemDesc,created,updated) value (#{itemid},#{itemdesc},#{created},#{updated})
+  </insert>
+    
+    
+    <select id="selectItemDescById" resultType="com.taotao.pojo.TbItemDesc" parameterType="long">
+        SELECT * FROM tb_item_desc WHERE itemId = #{id}
+    </select>
+
+    <update id="updateTbItemDesc" parameterType="com.taotao.pojo.TbItemDesc">
+        update tb_item_desc set itemDesc=#{itemdesc},updated=#{updated} where itemId = #{itemid}
+    </update>
+</mapper>

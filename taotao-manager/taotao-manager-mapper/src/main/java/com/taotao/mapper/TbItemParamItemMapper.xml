@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.taotao.mapper.TbItemParamItemMapper" >
+
+    
+    <resultMap id="item_param" type="com.taotao.pojo.TbItemParam">
+        <id property="id" column="id" ></id>
+        <result property="itemCatId" column="itemCatId"></result>
+
+        <result property="paramData" column="paramData"></result>
+
+        <result property="created" column="created"></result>
+
+        <result property="updated" column="updated"></result>
+
+        <association property="tbItemCat" javaType="com.taotao.pojo.TbItemCat">
+            <id property="id" column="id" ></id>
+            <result property="name" column="name"></result>
+        </association>
+    </resultMap>
+    
+    
+    <select id="selectAllItemParam" resultMap="item_param">
+        select p.*,c.name from tb_item_param p INNER JOIN
+        tb_item_cat c ON p.itemCatId=c.id where c.status = 1
+    </select>
+
+    <select id="seItemParamItemById" resultType="com.taotao.pojo.TbItemParamItem">
+        SELECT * FROM tb_item_param_item where itemId= #{id}
+    </select>
+
+    <update id="updateItemParamById">
+        UPDATE tb_item_param_item SET paramData = #{itemParams} where id=#{itemParamId}
+    </update>
+    
+    <insert id="saveParamByItemId">
+        insert into tb_item_param_item (itemid,paramData,created,updated)
+        values (#{itemId},#{paramData},#{created},#{updated});
+    </insert>
+</mapper>

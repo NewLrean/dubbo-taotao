@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.taotao.mapper.TbItemMapper" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultType="com.taotao.pojo.TbItem">
+  	select * from tb_item where id = #{id} 
+  </select>
+  
+  
+  <select id="selectAllItem" resultType="com.taotao.pojo.TbItem">
+  	select * from tb_item 
+  </select>
+  
+  
+  <insert id="saveitem" parameterType="com.taotao.pojo.TbItem">
+  	insert into tb_item(id,title,sellpoint,price,num,barcode,image,cid,status,created,updated)
+  	value (#{id},#{title},#{sellpoint},#{price},#{num}
+  	,#{barcode},#{image},#{cid},#{status},#{created},#{updated})
+  </insert>
+
+    <update id="updateitem">
+        update tb_item set title=#{title},sellpoint=#{sellpoint},price=#{price},num=#{num},barcode=#{barcode}
+        ,image=#{image},cid=#{cid},updated=#{updated} where id = #{id}
+    </update>
+  
+  
+  <delete id="deleteItems" >
+  	update tb_item set status = 3 where 
+  	<if test="list !=null and list.size()>0">
+            id IN
+            <foreach collection="list" open="(" close=")" separator="," item="type">
+                #{type}
+            </foreach>
+        </if>
+  </delete>
+  
+  <update id="reshelfItems">
+  	update tb_item set status = 1 where 
+  	<if test="list !=null and list.size()>0">
+            id IN
+            <foreach collection="list" open="(" close=")" separator="," item="type">
+                #{type}
+            </foreach>
+        </if>
+  </update>
+  
+  <update id="theshelvesItems">
+  	update tb_item set status = 2 where 
+  	<if test="list !=null and list.size()>0">
+            id IN
+            <foreach collection="list" open="(" close=")" separator="," item="type">
+                #{type}
+            </foreach>
+        </if>
+  </update>
+</mapper>
