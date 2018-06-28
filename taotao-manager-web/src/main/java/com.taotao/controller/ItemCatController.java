@@ -18,7 +18,13 @@ import com.taotao.service.ItemCatService;
 public class ItemCatController {
 	@Reference
 	ItemCatService itemCatService;
-	
+
+
+	/**
+	 * 查询一层类目
+	 * @param parentId 节点id
+	 * @return 返回json数据
+	 */
 	@RequestMapping("/list")
 	@ResponseBody
 	private List<EUTreeNode> getCatList(@RequestParam(value="id",defaultValue="0") Long parentId){

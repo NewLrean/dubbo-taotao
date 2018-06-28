@@ -20,8 +20,12 @@ public class PictrueController {
 	
 	@Reference
 	PictrueService pictrueService;
-	
-	
+
+	/**
+	 * 图片的上传
+	 * @param uploadFile 图片本身信息
+	 * @return 返回json数据
+	 */
 	@RequestMapping(value = "/pic/upload",method = RequestMethod.POST)
 	@ResponseBody
 	public Map uploadPic(MultipartFile uploadFile){

@@ -14,4 +14,6 @@ public interface TbItemParamMapper {
                              @Param("created") Date created, @Param("updated") Date updated);
 
     boolean deleteParams(@Param("list") ArrayList<Long> list);
+
+    TbItemParam selectParamById(Long paramid);
 }

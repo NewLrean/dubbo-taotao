@@ -19,4 +19,8 @@
             </foreach>
         </if>
     </delete>
+    
+    <select id="selectParamById" parameterType="java.lang.Long" resultType="com.taotao.pojo.TbItemParam">
+        select * from tb_item_param WHERE id=#{paramid};
+    </select>
 </mapper>

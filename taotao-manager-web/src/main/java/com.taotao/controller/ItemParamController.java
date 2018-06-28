@@ -28,6 +28,12 @@ public class ItemParamController {
     @Reference
     ItemParamService  itemParamService;
 
+    /**
+     * 显示所有类规格参数并分页
+     * @param page 当前页数
+     * @param rows 显示页数
+     * @return 返回json数据
+     */
     @RequestMapping("/list")
     @ResponseBody
     private EazyUIDataGridResult getItemList(Integer page, Integer rows){
@@ -37,6 +43,11 @@ public class ItemParamController {
 
     }
 
+    /**
+     * 查询类目规格参数
+     * @param id 类目id
+     * @return 返回json数据
+     */
     @RequestMapping("/query/itemcatid/{id}")
     @ResponseBody
     private TaotaoResult queryItemCatId(@PathVariable Long id){
@@ -53,6 +64,11 @@ public class ItemParamController {
         return taotaoResult;
     }
 
+    /**
+     * 删除类目规格参数
+     * @param ids 要删除的所有类目id字符串
+     * @return 返回json数据
+     */
     @RequestMapping("/delete/{ids}")
     @ResponseBody
     private TaotaoResult deleteParam(@PathVariable String ids){
@@ -67,12 +83,38 @@ public class ItemParamController {
 
     }
 
+
+    /**
+     * 添加类目规格参数
+     * @param id 类目id
+     * @param paramData 规格参数内容
+     * @return 返回json数据
+     */
     @RequestMapping("/save/{id}")
     @ResponseBody
     private TaotaoResult addCatParam(@PathVariable Long id,String paramData){
         TaotaoResult taotaoResult = itemParamService.saveItemParamCat(id, paramData);
         return taotaoResult;
     }
+
+    /**
+     * 通过规格参数id查规格参数
+     * @param paramid 规格参数id
+     * @return 返回json数据
+     */
+    @RequestMapping("/query/param/{paramid}")
+    @ResponseBody
+    private TaotaoResult queryOneParam(@PathVariable Long paramid){
+        TbItemParam tbItemParam = itemParamService.selectParamById(paramid);
+        TaotaoResult taotaoResult=null;
+        if(tbItemParam!=null){
+            taotaoResult=new TaotaoResult();
+            taotaoResult.setStatus(200);
+            taotaoResult.setData(tbItemParam);
+        }
+        return taotaoResult;
+    }
+
 
 
 }

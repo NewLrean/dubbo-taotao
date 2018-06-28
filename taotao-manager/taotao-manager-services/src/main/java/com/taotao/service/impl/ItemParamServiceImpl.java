@@ -93,5 +93,11 @@ public class ItemParamServiceImpl implements ItemParamService{
         return taotaoResult;
     }
 
+    @Override
+    public TbItemParam selectParamById(Long paramid) {
+        TbItemParam tbItemParam = tbItemParamMapper.selectParamById(paramid);
+        return tbItemParam;
+    }
+
 
 }

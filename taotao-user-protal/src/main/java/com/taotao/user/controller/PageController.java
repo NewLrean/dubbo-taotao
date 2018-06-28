@@ -1,5 +1,4 @@
-package com.taotao.controller;
-
+package com.taotao.user.controller;
 
 
 import org.springframework.stereotype.Controller;
@@ -22,16 +21,4 @@ public class PageController {
 		
 		return page;
 	}
-
-	@RequestMapping("/rest/page/item-edit")
-	private String UpdateItem(){
-
-		return "item-edit";
-	}
-
-	@RequestMapping("/rest/page/item-param-edit")
-	private String UpdateParam(){
-		return "item-param-edit";
-	}
-
 }

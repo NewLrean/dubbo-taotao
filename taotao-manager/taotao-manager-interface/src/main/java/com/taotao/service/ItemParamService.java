@@ -21,4 +21,6 @@ public interface ItemParamService {
     TaotaoResult saveItemParamCat(Long id,String paramData);
 
     TaotaoResult deleteParams(ArrayList<Long> list);
+
+    TbItemParam selectParamById(Long paramid);
 }

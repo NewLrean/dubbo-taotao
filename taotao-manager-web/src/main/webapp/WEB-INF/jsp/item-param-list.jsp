@@ -63,9 +63,24 @@
                 onLoad :function(){
                     //回显数据
                     var data = $("#itemParamList").datagrid("getSelections")[0];
-                    alert(data);
                     $("#itemParamAddTable").form("load",data);
 
+                //加载商品规格
+                    $.getJSON('/item/param/query/param/'+data.id,function(_data) {
+                        if(_data.status==200&&_data.data){
+                            var paramData = JSON.parse(_data.data.paramData);
+                            var temple = $(".itemParamAddTemplate li").eq(0).clone();
+                            for(var i in paramData) {
+                                var pd = paramData[i];
+                                $(".addGroup").click();
+                                for(var j in pd.params) {
+                                    var li = $(".itemParamAddTemplate li").eq(2).clone();
+                                    li.appendTo($(this).parentsUntil("ul").parent());
+                                    }
+
+                            }
+                        }
+                    });
                 }
             }).window("open");
         }
@@ -96,4 +111,21 @@
         	});
         }
     }];
+
+    $(function () {
+        $(".addGroup").click(function(){
+            var temple = $(".itemParamAddTemplate li").eq(0).clone();
+            $(this).parent().parent().append(temple);
+            temple.find(".addParam").click(function(){
+                var li = $(".itemParamAddTemplate li").eq(2).clone();
+                li.find(".delParam").click(function(){
+                    $(this).parent().remove();
+                });
+                li.appendTo($(this).parentsUntil("ul").parent());
+            });
+            temple.find(".delParam").click(function(){
+                $(this).parent().remove();
+            });
+        });
+    })
 </script>
