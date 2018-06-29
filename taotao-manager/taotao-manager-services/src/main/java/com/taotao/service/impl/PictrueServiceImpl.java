@@ -20,21 +20,22 @@ import com.taotao.utils.IdGenrtor;
 
 @Service
 public class PictrueServiceImpl implements PictrueService {
+
 	@Value("${FTP_ADDRESS}")
 	private String ADDRESS;
-	
+
 	@Value("${FTP_PROT}")
 	private String PROT;
-	
+
 	@Value("${FTP_USERNAME}")
 	private String USERNAME;
-	
+
 	@Value("${FTP_PASSWORD}")
 	private String PASSWORD;
-	
+
 	@Value("${FTP_BASEPATH}")
 	private String BASEPATH;
-	
+
 	@Value("${FTP_IMGPATH}")
 	private String IMGPATH;
 	@Override

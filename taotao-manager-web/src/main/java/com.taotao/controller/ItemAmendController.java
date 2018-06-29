@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.taotao.mapper.TbItemParamItemMapper;
 import com.taotao.pojo.TbItemDesc;
 import com.taotao.pojo.TbItemParam;
 import com.taotao.pojo.TbItemParamItem;

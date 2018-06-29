@@ -16,6 +16,8 @@ import com.taotao.service.ItemCatService;
 @Controller
 @RequestMapping("/item/cat")
 public class ItemCatController {
+
+
 	@Reference
 	ItemCatService itemCatService;
 

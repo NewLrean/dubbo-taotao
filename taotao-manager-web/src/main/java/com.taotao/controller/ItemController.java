@@ -3,7 +3,6 @@ package com.taotao.controller;
 import java.util.Date;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.taotao.mapper.TbItemParamItemMapper;
 import com.taotao.pojo.TbItemParamItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,8 +22,7 @@ import com.taotao.utils.IdGenrtor;
 @RequestMapping("/item")
 public class ItemController {
 
-	@Reference
-	private TbItemParamItemMapper itemParamItemMapper;
+
 	
 	@Reference
 	private TbItemService itemService;
