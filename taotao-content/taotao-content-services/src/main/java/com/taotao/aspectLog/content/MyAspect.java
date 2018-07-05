@@ -15,7 +15,7 @@ public class MyAspect {
 
 
 
-    @Pointcut("execution(* com.taotao.service.*.*(..))")
+    @Pointcut("execution(* com.taotao.service.*.*.*(..))")
     private void myPointCut() {
 
     }

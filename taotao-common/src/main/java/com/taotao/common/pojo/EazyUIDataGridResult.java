@@ -24,6 +24,12 @@ public class EazyUIDataGridResult implements Serializable{
 	public void setRows(List<?> rows) {
 		this.rows = rows;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "EazyUIDataGridResult{" +
+				"total=" + total +
+				", rows=" + rows +
+				'}';
+	}
 }

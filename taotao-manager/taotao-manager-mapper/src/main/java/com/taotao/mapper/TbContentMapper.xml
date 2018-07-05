@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.taotao.mapper.TbContentMapper" >
-  
+    <select id="queryContentsByCid" parameterType="long" resultType="com.taotao.pojo.TbContent">
+        SELECT * FROM tb_content WHERE categoryId=#{categoryId}
+    </select>
+
+    <insert id="saveOneContent" parameterType="com.taotao.pojo.TbContent">
+        INSERT INTO tb_content(categoryId,title,subTitle,titleDesc,url,pic,pic2,content,created,updated)
+         VALUE (#{categoryId},#{title},#{subTitle},#{titleDesc},#{url},
+         #{pic},#{pic2},#{content},#{created},#{updated})
+    </insert>
+
+    <delete id="deleteContentList" >
+        delete FROM tb_content  where
+        <if test="list !=null and list.size()>0">
+            id IN
+            <foreach collection="list" open="(" close=")" separator="," item="type">
+                #{type}
+            </foreach>
+        </if>
+    </delete>
+
+    <update id="updateContent" parameterType="com.taotao.pojo.TbContent">
+        UPDATE tb_content SET title=#{title},subTitle=#{subTitle},titleDesc=#{titleDesc},
+        url=#{url},pic=#{pic},pic2=#{pic2},content=#{content},updated=#{updated} where id=#{id}
+    </update>
+
+    <select id="selectOneContent" parameterType="long" resultType="com.taotao.pojo.TbContent">
+        SELECT * FROM tb_content WHERE id = #{id}
+    </select>
+
 </mapper>

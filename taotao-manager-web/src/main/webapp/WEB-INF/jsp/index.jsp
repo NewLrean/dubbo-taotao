@@ -35,6 +35,12 @@
 	         		<li data-options="attributes:{'url':'content'}">内容管理</li>
 	         	</ul>
          	</li>
+			<li>
+				<span>网站查询管理</span>
+				<ul>
+					<li data-options="attributes:{'url':'solr-import'}">数据文档管理</li>
+				</ul>
+			</li>
          </ul>
     </div>
     <div data-options="region:'center',title:''">

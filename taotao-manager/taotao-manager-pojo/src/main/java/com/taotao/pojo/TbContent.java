@@ -6,13 +6,13 @@ import java.util.Date;
 public class TbContent implements Serializable{
     private Long id;
 
-    private Long categoryid;
+    private Long categoryId;
 
     private String title;
 
-    private String subtitle;
+    private String subTitle;
 
-    private String titledesc;
+    private String titleDesc;
 
     private String url;
 
@@ -34,12 +34,12 @@ public class TbContent implements Serializable{
         this.id = id;
     }
 
-    public Long getCategoryid() {
-        return categoryid;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategoryid(Long categoryid) {
-        this.categoryid = categoryid;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getTitle() {
@@ -50,20 +50,20 @@ public class TbContent implements Serializable{
         this.title = title == null ? null : title.trim();
     }
 
-    public String getSubtitle() {
-        return subtitle;
+    public String getSubTitle() {
+        return subTitle;
     }
 
-    public void setSubtitle(String subtitle) {
-        this.subtitle = subtitle == null ? null : subtitle.trim();
+    public void setSubTitle(String subTitle) {
+        this.subTitle = subTitle;
     }
 
-    public String getTitledesc() {
-        return titledesc;
+    public String getTitleDesc() {
+        return titleDesc;
     }
 
-    public void setTitledesc(String titledesc) {
-        this.titledesc = titledesc == null ? null : titledesc.trim();
+    public void setTitleDesc(String titleDesc) {
+        this.titleDesc = titleDesc;
     }
 
     public String getUrl() {
@@ -113,4 +113,6 @@ public class TbContent implements Serializable{
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
     }
+
+
 }

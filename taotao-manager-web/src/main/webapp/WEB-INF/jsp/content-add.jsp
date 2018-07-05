@@ -71,6 +71,8 @@
 						$.messager.alert('提示','新增内容成功!');
     					$("#contentList").datagrid("reload");
     					TT.closeCurrentWindow();
+					}else{
+                        $.messager.alert('提示','新增内容失败!');
 					}
 				});
 			},

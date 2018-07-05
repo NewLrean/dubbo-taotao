@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.taotao.search.mapper.SolritemMapper" >
+    <select id="findAllItem" resultType="com.taotao.common.pojo.SolrItems">
+      SELECT a.id,a.title,a.sellPoint,a.price,a.image,c.name,b.itemDesc
+      FROM tb_item a LEFT JOIN tb_item_desc b ON a.id = b.itemId
+      LEFT JOIN tb_item_cat c ON a.cid = c.id WHERE a.status = 1
+    </select>
+</mapper>

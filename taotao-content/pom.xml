@@ -16,7 +16,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>taotao-content-interfaces</module>
-        <module>taotao-content-mappers</module>
         <module>taotao-content-services</module>
     </modules>
 

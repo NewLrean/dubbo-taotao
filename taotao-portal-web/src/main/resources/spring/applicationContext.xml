@@ -23,12 +23,11 @@
     <!-- 默认的注解映射的支持 默认找最新的处理器映射器，处理器适配器 -->
     <mvc:annotation-driven />
 
-
-    
     <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀    controller方法返回值+.jsp-->
 
     <!-- <mvc:annotation-driven conversion-service="conversionService"/> -->
 
+    <context:property-placeholder location="classpath:resource/AD1Node.properties"/>
 		
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -53,8 +52,8 @@
  <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="exceptionMappings">
             <props>
-                <prop key="java.lang.Exception">errors/error</prop>
-                <prop key="java.lang.Throwable">errors/err</prop>
+                <prop key="java.lang.Exception">error/exception</prop>
+                <prop key="java.lang.Throwable">error/err</prop>
             </props>
         </property>
         <property name="statusCodes">

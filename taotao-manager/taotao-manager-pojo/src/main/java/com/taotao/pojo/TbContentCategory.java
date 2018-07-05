@@ -6,15 +6,15 @@ import java.util.Date;
 public class TbContentCategory implements Serializable{
     private Long id;
 
-    private Long parentid;
+    private Long parentId;
 
     private String name;
 
     private Integer status;
 
-    private Integer sortorder;
+    private Integer sortOrder;
 
-    private Boolean isparent;
+    private Boolean isParent;
 
     private Date created;
 
@@ -28,12 +28,12 @@ public class TbContentCategory implements Serializable{
         this.id = id;
     }
 
-    public Long getParentid() {
-        return parentid;
+    public Long getParentId() {
+        return parentId;
     }
 
-    public void setParentid(Long parentid) {
-        this.parentid = parentid;
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
     }
 
     public String getName() {
@@ -41,7 +41,7 @@ public class TbContentCategory implements Serializable{
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public Integer getStatus() {
@@ -52,20 +52,20 @@ public class TbContentCategory implements Serializable{
         this.status = status;
     }
 
-    public Integer getSortorder() {
-        return sortorder;
+    public Integer getSortOrder() {
+        return sortOrder;
     }
 
-    public void setSortorder(Integer sortorder) {
-        this.sortorder = sortorder;
+    public void setSortOrder(Integer sortOrder) {
+        this.sortOrder = sortOrder;
     }
 
-    public Boolean getIsparent() {
-        return isparent;
+    public Boolean getParent() {
+        return isParent;
     }
 
-    public void setIsparent(Boolean isparent) {
-        this.isparent = isparent;
+    public void setParent(Boolean parent) {
+        isParent = parent;
     }
 
     public Date getCreated() {
