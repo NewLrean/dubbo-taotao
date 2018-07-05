@@ -48,6 +48,7 @@ public class SearchItemDaoImpl implements SearchItemDao{
                 if(strings1!=null&&strings1.size()>0){
                     solrItems.setSellPoint(strings1.get(0));
                 }else {
+                    if(solrDocument.get("item_sellpoint")!=null)
                     solrItems.setSellPoint(solrDocument.get("item_sellpoint").toString());
                 }
 

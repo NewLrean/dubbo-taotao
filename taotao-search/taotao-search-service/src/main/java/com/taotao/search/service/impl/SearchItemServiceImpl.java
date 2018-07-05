@@ -32,13 +32,13 @@ public class SearchItemServiceImpl implements SearchItemService {
         if(pageNum==null){
             pageNum=1;
         }
-        query.setStart(pageNum-1);
-        query.setRows((pageNum)*rows);
+        query.setStart((pageNum-1)*rows);
+        query.setRows(rows);
 
         query.setHighlight(true);
         query.addHighlightField("item_title");
         query.addHighlightField("item_sellpoint");
-        query.setHighlightSimplePre("<span style='color:red;'>");
+        query.setHighlightSimplePre("<span style='color:red;font-size:15px;git status'>");
         query.setHighlightSimplePost("</span>");
 
         SolrResult findsolritem = searchItemDao.findsolritem(query);
