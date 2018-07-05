@@ -2,9 +2,14 @@
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/taotao-common/taotao-manager-web" />
+    <file type="web" url="file://$PROJECT_DIR$/taotao-content/taotao-content-service" />
+    <file type="web" url="file://$PROJECT_DIR$/taotao-content/taotao-content-services" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-manager-web" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-manager/taotao-manager-service" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-manager/taotao-manager-services" />
+    <file type="web" url="file://$PROJECT_DIR$/taotao-portal-web" />
+    <file type="web" url="file://$PROJECT_DIR$/taotao-search/taotao-search-service" />
+    <file type="web" url="file://$PROJECT_DIR$/taotao-user-protal" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -13,10 +18,17 @@
         <option value="$PROJECT_DIR$/taotao-common/pom.xml" />
         <option value="$PROJECT_DIR$/taotao-manager/pom.xml" />
         <option value="$PROJECT_DIR$/taotao-manager-web/pom.xml" />
+        <option value="$PROJECT_DIR$/taotao-portal-web/pom.xml" />
+        <option value="$PROJECT_DIR$/taotao-content/pom.xml" />
+        <option value="$PROJECT_DIR$/taotao-search/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/taotao-content/taotao-content-interface/pom.xml" />
+        <option value="$PROJECT_DIR$/taotao-content/taotao-content-mapper/pom.xml" />
+        <option value="$PROJECT_DIR$/taotao-content/taotao-content-mappers/pom.xml" />
+        <option value="$PROJECT_DIR$/taotao-content/taotao-content-service/pom.xml" />
         <option value="$PROJECT_DIR$/taotao-manager/taotao-manager-service/pom.xml" />
       </set>
     </option>

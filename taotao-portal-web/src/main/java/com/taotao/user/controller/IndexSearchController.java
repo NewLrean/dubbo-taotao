@@ -6,6 +6,7 @@ import com.taotao.search.service.SearchItemService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.UnsupportedEncodingException;
@@ -22,7 +23,7 @@ public class IndexSearchController {
     private SearchItemService searchItemService;
 
     @RequestMapping("/search")
-    private String IndexQueryItems(String q,Integer page, Model model){
+    private String IndexQueryItems(String q, @RequestParam(value="page",defaultValue="1")Integer page, Model model){
 
         try {
             q=new String(q.getBytes("iso-8859-1"),"utf-8");

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+
+    <!-- 注解扫描包 -->
+    <context:component-scan base-package="com.taotao.search"/>
+
+    <!-- 引入外部属性配置文件 -->
+    <context:property-placeholder location="classpath*:resource/*.properties"/>
+
+    <!-- 配置数据源 使用的是Druid数据源 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+          init-method="init" destroy-method="close">
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <!-- 初始化连接大小 -->
+        <property name="initialSize" value="${druid.initialSize}"/>
+        <!-- 连接池最大使用连接数量 -->
+        <property name="maxActive" value="${druid.maxActive}"/>
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle" value="${druid.minIdle}"/>
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait" value="${druid.maxWait}"/>
+        <!-- 监控数据库 -->
+        <property name="filters" value="stat"/>
+    </bean>
+
+    <!--mybatis的基本配置-->
+    <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+
+        <!--数据源配置-->
+        <property name="dataSource" ref="dataSource"></property>
+
+        <property name="configLocation" value="classpath:mybatis/mybatis.xml"></property>
+
+        <property name="mapperLocations" value="classpath*:com/taotao/search/mapper/*Mapper.xml">
+        </property>
+
+        <!-- 设置别名包 -->
+        <property name="typeAliasesPackage" value="com.taotao.search.mapper"></property>
+
+    </bean>
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.taotao.search.mapper"></property>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+    </bean>
+
+    <!--开启aop扫描-->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+    <bean id="myAspect" class="com.taotao.aspectLog.search.MyAspect"/>
+
+    <bean id="httpSolrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer" >
+        <constructor-arg name="baseURL" value="http://192.168.25.153:8080/solr/mycore2"/>
+    </bean>
+
+
+    <dubbo:application name="taotao-search"/>
+
+    <dubbo:registry protocol="zookeeper" address="localhost:2181"/>
+
+    <!-- use dubbo protocol to export service on port 20880 -->
+    <dubbo:protocol name="dubbo" port="20882"/>
+
+    <dubbo:service interface="com.taotao.search.service.SolrItemsService" ref="solrItemsServiceImpl" timeout="30000"/>
+
+    <dubbo:service interface="com.taotao.search.service.SearchItemService" ref="searchItemServiceImpl" timeout="30000"/>
+</beans>
