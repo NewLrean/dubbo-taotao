@@ -40,4 +40,5 @@ public class IndexSearchController {
         return "search";
     }
 
+
 }

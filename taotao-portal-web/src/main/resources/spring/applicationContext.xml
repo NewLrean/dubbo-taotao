@@ -48,6 +48,9 @@
     <!-- 对静态资源文件的访问  方案一 （二选一） -->
     <mvc:default-servlet-handler/>
 
+    <!--全局异常处理-->
+    <bean class="com.taotao.user.exception.GobalExceptionResolver"/>
+
 <!-- 异常处理配置 -->
  <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="exceptionMappings">
