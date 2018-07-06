@@ -76,6 +76,14 @@ public class SolrItems implements Serializable{
         this.itemDesc = itemDesc;
     }
 
+    public String[] getImages(){
+        if(image!=null||!"".equals(image)){
+            String[] images = image.split(",");
+            return  images;
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return "SolrItems{" +
