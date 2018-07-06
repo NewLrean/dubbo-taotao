@@ -1,4 +1,4 @@
-package com.taotao.aspectLog;
+package com.taotao.aspectLog.rest;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -15,7 +15,7 @@ public class MyAspect {
 
 
 
-    @Pointcut("execution(* com.taotao.service.*.*(..))")
+    @Pointcut("execution(* com.taotao.rest.*.*(..))")
     private void myPointCut() {
 
     }

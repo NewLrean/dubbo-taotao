@@ -1,7 +1,6 @@
 package com.taotao.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
