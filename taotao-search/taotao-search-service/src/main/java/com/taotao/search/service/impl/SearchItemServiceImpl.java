@@ -25,7 +25,7 @@ public class SearchItemServiceImpl implements SearchItemService {
         if(queryString==null||"".equals(queryString)){
             query.setQuery("*");
         }else {
-            query.setQuery(queryString);
+                query.setQuery(queryString);
         }
 
         query.set("df","key_word_item");
@@ -42,7 +42,7 @@ public class SearchItemServiceImpl implements SearchItemService {
         query.setHighlightSimplePost("</span>");
 
         SolrResult findsolritem = searchItemDao.findsolritem(query);
-        int pages= (int) (findsolritem.getTotal()%rows==0?findsolritem.getTotal()/rows:findsolritem.getTotal()%rows+1);
+        int pages= (int) (findsolritem.getTotal()%rows==0?findsolritem.getTotal()/rows:findsolritem.getTotal()/rows+1);
         findsolritem.setPages(pages);
         return findsolritem;
     }

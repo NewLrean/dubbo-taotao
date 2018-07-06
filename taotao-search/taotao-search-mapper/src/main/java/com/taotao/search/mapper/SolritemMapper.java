@@ -1,6 +1,7 @@
 package com.taotao.search.mapper;
 
 import com.taotao.common.pojo.SolrItems;
+import com.taotao.pojo.TbItem;
 
 import java.util.List;
 
@@ -9,4 +10,5 @@ import java.util.List;
  */
 public interface SolritemMapper {
     List<SolrItems> findAllItem();
+
 }

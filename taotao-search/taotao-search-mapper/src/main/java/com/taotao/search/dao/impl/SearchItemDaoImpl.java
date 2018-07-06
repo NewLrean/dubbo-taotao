@@ -53,6 +53,7 @@ public class SearchItemDaoImpl implements SearchItemDao{
                 }
 
                 solrItems.setPrice((Long) solrDocument.get("item_price"));
+                if(solrDocument.get("item_image")!=null)
                 solrItems.setImage(solrDocument.get("item_image").toString());
                 solrItems.setName(solrDocument.get("item_categoryName").toString());
                 solrItemlist.add(solrItems);
@@ -61,7 +62,6 @@ public class SearchItemDaoImpl implements SearchItemDao{
             SolrResult solrResult=new SolrResult();
             solrResult.setTotal(results.getNumFound());
             solrResult.setItems(solrItemlist);
-
             return solrResult;
         } catch (SolrServerException e) {
             e.printStackTrace();

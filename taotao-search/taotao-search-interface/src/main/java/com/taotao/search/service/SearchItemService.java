@@ -7,4 +7,6 @@ import com.taotao.common.pojo.SolrResult;
  */
 public interface SearchItemService {
     SolrResult queryitemList(String queryString,Integer pageNum,Integer rows);
+
+
 }
