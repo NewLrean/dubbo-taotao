@@ -70,9 +70,18 @@
 
     <bean id="myAspect" class="com.taotao.aspectLog.search.MyAspect"/>
 
-    <bean id="httpSolrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer" >
-        <constructor-arg name="baseURL" value="http://192.168.25.153:8080/solr/mycore2"/>
+    <bean id="httpSolrClient" class="org.apache.solr.client.solrj.impl.HttpSolrClient" >
+        <constructor-arg name="builder" value="http://192.168.25.153:8080/solr/mycore2"/>
     </bean>
+
+
+    <!--<bean class="org.apache.solr.client.solrj.impl.CloudSolrClient.Builder" id="emptyBuilder"/>
+    <bean factory-bean="emptyBuilder" factory-method="withZkHost" id="builder">
+        <constructor-arg value="192.168.25.151:2181,192.168.25.151:2182,192.168.25.151:2183" type="java.lang.String"/>
+    </bean>
+    <bean factory-bean="builder" factory-method="build" id="solrClient">
+        <property name="defaultCollection" value="collection2"/>
+    </bean>-->
 
 
     <dubbo:application name="taotao-search"/>

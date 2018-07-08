@@ -3,15 +3,17 @@ package com.taotao.search.dao.impl;
 import com.taotao.common.pojo.SolrItems;
 import com.taotao.common.pojo.SolrResult;
 import com.taotao.search.dao.SearchItemDao;
+import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
-import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -24,13 +26,13 @@ import java.util.Map;
 public class SearchItemDaoImpl implements SearchItemDao{
 
     @Autowired
-    private SolrServer solrServer;
+    private SolrClient solrClient;
 
     @Override
     public SolrResult findsolritem(SolrQuery query) {
 
         try {
-            QueryResponse queryResponse = solrServer.query(query);
+            QueryResponse queryResponse = solrClient.query(query);
             SolrDocumentList results = queryResponse.getResults();
             List<SolrItems> solrItemlist=new ArrayList<SolrItems>();
 
@@ -64,6 +66,8 @@ public class SearchItemDaoImpl implements SearchItemDao{
             solrResult.setItems(solrItemlist);
             return solrResult;
         } catch (SolrServerException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return null;

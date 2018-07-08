@@ -4,12 +4,14 @@ import com.taotao.common.pojo.SolrItems;
 import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.search.mapper.SolritemMapper;
 import com.taotao.search.service.SolrItemsService;
-import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.List;
 
@@ -23,7 +25,7 @@ public class SolrItemsServiceImpl implements SolrItemsService{
     private SolritemMapper solritemMapper;
 
     @Autowired
-    private SolrServer solrServer;
+    private SolrClient solrClient;
 
     @Override
     public TaotaoResult importAllItem() {
@@ -39,9 +41,9 @@ public class SolrItemsServiceImpl implements SolrItemsService{
                 inputFields.addField("item_price", solrItems.getPrice());
                 inputFields.addField("item_image", solrItems.getImage());
                 inputFields.addField("item_itemDesc", solrItems.getItemDesc());
-                solrServer.add(inputFields);
+                solrClient.add(inputFields);
             }
-        solrServer.commit();
+            solrClient.commit();
             return TaotaoResult.bulid();
         }catch (SolrServerException e) {
             e.printStackTrace();
