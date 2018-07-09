@@ -131,6 +131,10 @@
                      advice-ref="transactionAdvice"/>
     </aop:config>
 
+
+    <import resource="spring-ActiveMq.xml"/>
+
+
     <!-- 开启事务扫描 -->
    <!-- <tx:annotation-driven/>-->
 

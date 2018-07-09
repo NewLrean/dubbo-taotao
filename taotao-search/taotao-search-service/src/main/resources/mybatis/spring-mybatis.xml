@@ -83,6 +83,8 @@
         <property name="defaultCollection" value="collection2"/>
     </bean>-->
 
+    <import resource="spring-Activemq.xml"/>
+
 
     <dubbo:application name="taotao-search"/>
 

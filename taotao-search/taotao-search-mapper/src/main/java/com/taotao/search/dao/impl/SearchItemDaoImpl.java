@@ -55,8 +55,10 @@ public class SearchItemDaoImpl implements SearchItemDao{
                 }
 
                 solrItems.setPrice((Long) solrDocument.get("item_price"));
-                if(solrDocument.get("item_image")!=null)
-                solrItems.setImage(solrDocument.get("item_image").toString());
+
+
+                solrItems.setImage(solrDocument.get("item_image")==null?"":solrDocument.get("item_image").toString());
+
                 solrItems.setName(solrDocument.get("item_categoryName").toString());
                 solrItemlist.add(solrItems);
             }

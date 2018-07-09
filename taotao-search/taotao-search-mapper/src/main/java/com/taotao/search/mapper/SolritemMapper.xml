@@ -6,4 +6,10 @@
       FROM tb_item a LEFT JOIN tb_item_desc b ON a.id = b.itemId
       LEFT JOIN tb_item_cat c ON a.cid = c.id WHERE a.status = 1
     </select>
+
+    <select id="findItemById" parameterType="long" resultType="com.taotao.common.pojo.SolrItems">
+        SELECT a.id,a.title,a.sellPoint,a.price,a.image,c.name,b.itemDesc
+      FROM tb_item a LEFT JOIN tb_item_desc b ON a.id = b.itemId
+      LEFT JOIN tb_item_cat c ON a.cid = c.id WHERE a.status = 1 and a.id =#{itemId}
+    </select>
 </mapper>

@@ -114,6 +114,14 @@ public class TbItem implements Serializable{
         this.updated = updated;
     }
 
+    private String [] images;
+    public String[] getImages(){
+        if(image!=null||!"".equals(image)){
+            this.images = image.split(",");
+            return  images;
+        }
+        return null;
+    }
 	@Override
 	public String toString() {
 		return "TbItem [id=" + id + ", title=" + title + ", sellpoint=" + sellpoint + ", price=" + price + ", num="

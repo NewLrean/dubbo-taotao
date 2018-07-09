@@ -7,4 +7,6 @@ import com.taotao.common.pojo.TaotaoResult;
  */
 public interface SolrItemsService {
     TaotaoResult importAllItem();
+
+    void findItemById(long itemId);
 }

@@ -8,7 +8,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.taotao.mapper.TbItemParamItemMapper;
+import org.apache.activemq.command.ActiveMQTopic;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
@@ -24,6 +27,8 @@ import com.taotao.utils.IdGenrtor;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.jms.*;
+
 @Service
 public class TbItemServiceImpl implements TbItemService {
 
@@ -36,6 +41,12 @@ public class TbItemServiceImpl implements TbItemService {
 
 	@Autowired
 	private TbItemParamItemMapper itemParamItemMapper;
+
+	@Autowired
+	private JmsTemplate jmsTemplate;
+
+	@Autowired
+	private Topic topic;
 
 	@Override
 	public TbItem selectByPrimaryKey(Long id) {
@@ -89,7 +100,7 @@ public class TbItemServiceImpl implements TbItemService {
 
 		if (!saveTbItemDesc) {
 
-try {
+			try {
 				
 				throw new Exception();
 
@@ -101,6 +112,14 @@ try {
 			}
 			
 		}
+
+		jmsTemplate.send(topic, new MessageCreator() {
+			@Override
+			public Message createMessage(Session session) throws JMSException {
+				TextMessage textMessage = session.createTextMessage(itemID+"");
+				return textMessage;
+			}
+		});
 		
 		return TaotaoResult.bulid();
 		

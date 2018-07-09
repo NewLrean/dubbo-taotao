@@ -52,4 +52,25 @@ public class SolrItemsServiceImpl implements SolrItemsService{
         }
         return TaotaoResult.bulid(500,"执行错误!");
     }
+
+    @Override
+    public void findItemById(long itemId) {
+        SolrItems item = solritemMapper.findItemById(itemId);
+        SolrInputDocument inputFields=new SolrInputDocument();
+        inputFields.addField("id", item.getId().toString());
+        inputFields.addField("item_title", item.getTitle());
+        inputFields.addField("item_sellpoint", item.getSellPoint());
+        inputFields.addField("item_categoryName", item.getName());
+        inputFields.addField("item_price", item.getPrice());
+        inputFields.addField("item_image", item.getImage());
+        inputFields.addField("item_itemDesc", item.getItemDesc());
+        try {
+            solrClient.add(inputFields);
+            solrClient.commit();
+        } catch (SolrServerException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

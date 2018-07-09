@@ -11,4 +11,5 @@ import java.util.List;
 public interface SolritemMapper {
     List<SolrItems> findAllItem();
 
+    SolrItems findItemById(long itemId);
 }
