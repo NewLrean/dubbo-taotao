@@ -1,4 +1,4 @@
-package com.taotao.user.controller;
+package com.taotao.item.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.taotao.pojo.TbItem;
@@ -22,9 +22,9 @@ public class AboutItemController {
 
     @RequestMapping("/item/{itemId}")
     public String showItem(@PathVariable Long itemId, Model model) {
+        System.out.println(itemId);
         TbItem item = searchAboutService.selectByPrimaryKey(itemId);
         model.addAttribute("item", item);
-
         return "item";
     }
 
