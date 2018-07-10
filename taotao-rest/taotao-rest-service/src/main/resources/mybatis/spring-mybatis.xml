@@ -203,6 +203,8 @@
         <constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
     </bean>
 
+    <import resource="spring-Activemq.xml"/>
+
 
     <dubbo:application name="taotao-provider2"/>
 

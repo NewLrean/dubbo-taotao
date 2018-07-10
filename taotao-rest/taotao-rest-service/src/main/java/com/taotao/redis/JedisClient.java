@@ -15,6 +15,8 @@ public interface JedisClient {
 	 * @param key 值
 	 * @return
 	 */
+	Long del(String key);
+
 	String get(String key);
 
 	/**

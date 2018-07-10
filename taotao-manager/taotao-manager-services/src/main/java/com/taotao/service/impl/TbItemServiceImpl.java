@@ -84,7 +84,6 @@ public class TbItemServiceImpl implements TbItemService {
 		tbItem.setId(itemID);
 		SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd hh-mm-ss");
 		Date date=new Date();
-
 		tbItem.setStatus((byte) 1);
 		tbItem.setCreated(date);
 		tbItem.setUpdated(date);
@@ -108,7 +107,7 @@ public class TbItemServiceImpl implements TbItemService {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}finally{
-				return new TaotaoResult(500, "失败");
+				return new TaotaoResult(500, "添加失败");
 			}
 			
 		}
@@ -116,7 +115,7 @@ public class TbItemServiceImpl implements TbItemService {
 		jmsTemplate.send(topic, new MessageCreator() {
 			@Override
 			public Message createMessage(Session session) throws JMSException {
-				TextMessage textMessage = session.createTextMessage(itemID+"");
+				TextMessage textMessage = session.createTextMessage("add,"+itemID);
 				return textMessage;
 			}
 		});
@@ -133,6 +132,20 @@ public class TbItemServiceImpl implements TbItemService {
 		 if(!deleteItems){
 			 return new TaotaoResult(500, "删除失败");
 		 }
+
+		StringBuffer stringBuffer=new StringBuffer();
+		 for (Long id:list){
+			 stringBuffer.append(","+id);
+		 }
+
+		jmsTemplate.send(topic, new MessageCreator() {
+			@Override
+			public Message createMessage(Session session) throws JMSException {
+				////发送删除消息，携带所有删除的物品id字符串，以逗号隔开
+				TextMessage textMessage = session.createTextMessage("del"+stringBuffer);
+				return textMessage;
+			}
+		});
 		 
 		 return TaotaoResult.bulid();
 	}
@@ -142,10 +155,26 @@ public class TbItemServiceImpl implements TbItemService {
 	public TaotaoResult reshelfItems(ArrayList<Long> list) {
 		// TODO Auto-generated method stub
 		Map map=new HashMap<>();
-		 boolean deleteItems = tbitemMapper.reshelfItems(list);
-		 if(!deleteItems){
-			 return new TaotaoResult(500, "删除失败");
+		boolean reshelfItems = tbitemMapper.reshelfItems(list);
+		if(!reshelfItems){
+			 return new TaotaoResult(500, "上架失败");
 		 }
+
+		StringBuffer stringBuffer=new StringBuffer();
+		for (Long id:list){
+
+			stringBuffer.append(","+id);
+		}
+
+
+		jmsTemplate.send(topic, new MessageCreator() {
+			@Override
+			public Message createMessage(Session session) throws JMSException {
+				//发送上架消息，携带所有上架的物品id字符串，以逗号隔开
+				TextMessage textMessage = session.createTextMessage("reshelf"+stringBuffer);
+				return textMessage;
+			}
+		});
 		 
 		 return TaotaoResult.bulid();
 	}
@@ -157,8 +186,23 @@ public class TbItemServiceImpl implements TbItemService {
 		Map map=new HashMap<>();
 		 boolean deleteItems = tbitemMapper.theshelvesItems(list);
 		 if(!deleteItems){
-			 return new TaotaoResult(500, "删除失败");
+			 return new TaotaoResult(500, "下架失败");
 		 }
+
+
+		StringBuffer stringBuffer=new StringBuffer();
+		for (Long id:list){
+			stringBuffer.append(","+id);
+		}
+
+		jmsTemplate.send(topic, new MessageCreator() {
+			@Override
+			public Message createMessage(Session session) throws JMSException {
+				//发送下架消息，携带所有下架的物品id，以逗号隔开
+				TextMessage textMessage = session.createTextMessage("theshelves"+stringBuffer);
+				return textMessage;
+			}
+		});
 		 
 		 return TaotaoResult.bulid();
 	}
@@ -178,9 +222,12 @@ public class TbItemServiceImpl implements TbItemService {
 		tbitemMapper.updateitem(item);
 		itemDesc.setItemid(item.getId());
 		itemDesc.setUpdated(date);
-		itemDescMapper.updateTbItemDesc(itemDesc);
-		boolean b = itemParamItemMapper.updateItemParamById(itemParams, itemParamId);
-		if(!b){
+		boolean b1 = itemDescMapper.updateTbItemDesc(itemDesc);
+		boolean b=true;
+		if(itemParams!=null&&itemParamId!=null) {
+			b= itemParamItemMapper.updateItemParamById(itemParams, itemParamId);
+		}
+		if(!b1||!b){
 			try {
 				throw new Exception();
 			} catch (Exception e) {
@@ -189,6 +236,15 @@ public class TbItemServiceImpl implements TbItemService {
 				return new TaotaoResult(500, "失败");
 			}
 		}
+
+		jmsTemplate.send(topic, new MessageCreator() {
+			@Override
+			public Message createMessage(Session session) throws JMSException {
+				//发送下架消息，携带所有下架的物品id，以逗号隔开
+				TextMessage textMessage = session.createTextMessage("upd,"+item.getId());
+				return textMessage;
+			}
+		});
 		return TaotaoResult.bulid();
 	}
 

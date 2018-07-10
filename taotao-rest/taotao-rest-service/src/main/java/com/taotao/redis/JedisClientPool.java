@@ -21,6 +21,14 @@ public class JedisClientPool implements JedisClient {
 	}
 
 	@Override
+	public Long del(String key) {
+		Jedis jedis = jedisPool.getResource();
+		Long result = jedis.del(key);
+		jedis.close();
+		return result;
+	}
+
+	@Override
 	public String get(String key) {
 		Jedis jedis = jedisPool.getResource();
 		String result = jedis.get(key);

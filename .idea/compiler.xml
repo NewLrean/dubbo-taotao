@@ -9,15 +9,20 @@
         <module name="taotao-common" />
         <module name="taotao-content-interfaces" />
         <module name="taotao-content-services" />
+        <module name="taotao-item-web" />
         <module name="taotao-manager-interface" />
         <module name="taotao-manager-mapper" />
         <module name="taotao-manager-pojo" />
         <module name="taotao-manager-services" />
         <module name="taotao-manager-web" />
         <module name="taotao-portal-web" />
+        <module name="taotao-rest-dao" />
+        <module name="taotao-rest-interface" />
+        <module name="taotao-rest-service" />
         <module name="taotao-search-interface" />
         <module name="taotao-search-mapper" />
         <module name="taotao-search-service" />
+        <module name="taotao-search-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -29,6 +34,7 @@
       <module name="taotao-content-mappers" target="1.8" />
       <module name="taotao-content-service" target="1.8" />
       <module name="taotao-content-services" target="1.8" />
+      <module name="taotao-item-web" target="1.8" />
       <module name="taotao-manager" target="1.8" />
       <module name="taotao-manager-interface" target="1.8" />
       <module name="taotao-manager-mapper" target="1.8" />
@@ -38,10 +44,15 @@
       <module name="taotao-manager-web" target="1.8" />
       <module name="taotao-parent" target="1.8" />
       <module name="taotao-portal-web" target="1.8" />
+      <module name="taotao-rest" target="1.8" />
+      <module name="taotao-rest-dao" target="1.8" />
+      <module name="taotao-rest-interface" target="1.8" />
+      <module name="taotao-rest-service" target="1.8" />
       <module name="taotao-search" target="1.8" />
       <module name="taotao-search-interface" target="1.8" />
       <module name="taotao-search-mapper" target="1.8" />
       <module name="taotao-search-service" target="1.8" />
+      <module name="taotao-search-web" target="1.8" />
       <module name="taotao-user-protal" target="1.8" />
       <module name="taotaocontent" target="1.8" />
     </bytecodeTargetLevel>

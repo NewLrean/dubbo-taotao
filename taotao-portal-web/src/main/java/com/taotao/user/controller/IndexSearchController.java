@@ -31,6 +31,10 @@ public class IndexSearchController {
             e.printStackTrace();
         }
         System.out.println(q);
+        q=q.replace(" ", "");
+        if(q==null||q.length()==0){
+            return null;
+        }
         SolrResult solrResult = searchItemService.queryitemList(q, page, 20);
 
         model.addAttribute("query",q);

@@ -4,10 +4,13 @@
     <file type="web" url="file://$PROJECT_DIR$/taotao-common/taotao-manager-web" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-content/taotao-content-service" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-content/taotao-content-services" />
+    <file type="web" url="file://$PROJECT_DIR$/taotao-item-web" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-manager-web" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-manager/taotao-manager-service" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-manager/taotao-manager-services" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-portal-web" />
+    <file type="web" url="file://$PROJECT_DIR$/taotao-rest/taotao-rest-service" />
+    <file type="web" url="file://$PROJECT_DIR$/taotao-search-web" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-search/taotao-search-service" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-user-protal" />
   </component>
@@ -21,6 +24,9 @@
         <option value="$PROJECT_DIR$/taotao-portal-web/pom.xml" />
         <option value="$PROJECT_DIR$/taotao-content/pom.xml" />
         <option value="$PROJECT_DIR$/taotao-search/pom.xml" />
+        <option value="$PROJECT_DIR$/taotao-rest/pom.xml" />
+        <option value="$PROJECT_DIR$/taotao-item-web/pom.xml" />
+        <option value="$PROJECT_DIR$/taotao-search-web/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

@@ -77,8 +77,9 @@ public class SolrItems implements Serializable{
     }
 
     public String[] getImages(){
-        if(image!=null||!"".equals(image)){
-            String[] images = image.split(",");
+        String[] images=null;
+        if(image!=null&&!"".equals(image)){
+            images = image.split(",");
             return  images;
         }
         return null;
