@@ -75,6 +75,7 @@
                             var temple = $(".itemParamAddTemplate li").eq(0).clone();
                             for(var i in paramData) {
                                 var pd = paramData[i];
+                                //alert(pd.group);
                                 $(".addGroup").click();
                                 for(var j in pd.params) {
                                     var li = $(".itemParamAddTemplate li").eq(2).clone();

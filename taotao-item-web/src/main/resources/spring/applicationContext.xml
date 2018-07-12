@@ -18,7 +18,7 @@
 
 
     <!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
-    <context:component-scan base-package="com.taotao.item.controller"/>
+    <context:component-scan base-package="com.taotao.item"/>
 
     <!-- 默认的注解映射的支持 默认找最新的处理器映射器，处理器适配器 -->
     <mvc:annotation-driven />
@@ -27,7 +27,7 @@
 
     <!-- <mvc:annotation-driven conversion-service="conversionService"/> -->
 
-    <context:property-placeholder location="classpath:resource/AD1Node.properties"/>
+    <context:property-placeholder location="classpath:resource/*.properties"/>
 		
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -83,11 +83,36 @@
         <property name="maxInMemorySize" value="40960" />
     </bean>
 
+    <mvc:annotation-driven >
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8"/>
+                <property name="supportedMediaTypes">
+                    <list>
+                        <bean class="org.springframework.http.MediaType">
+                            <constructor-arg index="0" value="text"/>
+                            <constructor-arg index="1" value="plain"/>
+                            <constructor-arg index="2" value="UTF-8"/>
+                        </bean>
+                        <bean class="org.springframework.http.MediaType">
+                            <constructor-arg index="0" value="*"/>
+                            <constructor-arg index="1" value="*"/>
+                            <constructor-arg index="2" value="UTF-8"/>
+                        </bean>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    <import resource="spring-Activemq.xml"/>
+
+    <import resource="spring-FreeMarker.xml"/>
+
 
     <dubbo:application name="taotao-item"/>
 
     <dubbo:registry protocol="zookeeper" address="localhost:2181"/>
 
-    <dubbo:annotation package="com.taotao.item.controller"/>
+    <dubbo:annotation package="com.taotao.item"/>
 
 </beans>

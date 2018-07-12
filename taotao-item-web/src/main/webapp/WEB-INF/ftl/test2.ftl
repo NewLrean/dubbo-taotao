@@ -1,0 +1,1 @@
+创建时间:${tbitem.created?string('yyyy/MM/dd HH:mm:ss')}

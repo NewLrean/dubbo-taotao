@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="freeMarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="templateLoaderPath" value="/WEB-INF/ftl/"/>
+    </bean>
+    <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape" />
+    <!-- 配置freeMarker視圖解析器 -->
+    <bean id="freemakerViewResolver"        class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="viewClass"        value="org.springframework.web.servlet.view.freemarker.FreeMarkerView" />
+        <!-- 掃描路徑內所有以ftl結尾的文件 -->
+        <property name="viewNames">
+            <array>
+                <value>*.ftl</value>
+            </array>
+        </property>
+        <property name="contentType" value="text/html; charset=UTF-8" />
+        <property name="exposeRequestAttributes" value="true" />
+        <property name="exposeSessionAttributes" value="true" />
+        <property name="exposeSpringMacroHelpers" value="true" />
+        <property name="requestContextAttribute" value="request" />
+        <!-- 給視圖解析器配置優先級，你可以給之前jsp視圖解析器的值配為2 -->
+        <property name="order" value="1" />
+    </bean>
+</beans>

@@ -94,6 +94,12 @@
             <groupId>com.caucho</groupId>
             <artifactId>hessian</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
