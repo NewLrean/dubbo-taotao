@@ -4,7 +4,15 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
-  <display-name>taotao-consumer</display-name>
+  <!--<display-name>taotao-consumer</display-name>
+  <filter>
+    <filter-name>SSOFilter</filter-name>
+    <filter-class>com.taotao.user.filter.SSOClientFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>SSOFilter</filter-name>
+    <url-pattern>*.html</url-pattern>
+  </filter-mapping>-->
 
   <servlet>
     <servlet-name>SpringMVC-user</servlet-name>
@@ -22,5 +30,7 @@
     <!-- 此处可以可以配置成*.do，对应struts的后缀习惯 -->
     <url-pattern>*.html</url-pattern>
   </servlet-mapping>
+
+
 
 </web-app>

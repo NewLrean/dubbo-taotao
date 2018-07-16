@@ -1,14 +1,20 @@
 package com.taotao.user.controller;
 
+import com.alibaba.dubbo.common.utils.StringUtils;
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.taotao.content.pojo.CatjsonResult;
+import com.taotao.content.pojo.ItemjsonCat;
 import com.taotao.pojo.TbContent;
+import com.taotao.pojo.TbItemCat;
 import com.taotao.service.content.ContentService;
+import com.taotao.service.content.IndexCatService;
 import com.taotao.user.pojo.AD1Node;
 import com.taotao.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +37,8 @@ public class IndexController {
     @Reference
     private ContentService contentService;
 
+    @Reference
+    private IndexCatService indexCatService;
 
     @RequestMapping("/index")
     private String showIndex(Model model){
@@ -53,4 +61,19 @@ public class IndexController {
         model.addAttribute("ad1",json);
         return "index";
     }
+
+
+    @RequestMapping(value = "/rest/itemcat/all")
+    @ResponseBody
+    private String queryCatAll(String callback){
+
+        CatjsonResult catjsonResult = indexCatService.getCatjsonResult();
+        if(StringUtils.isNotEmpty(callback)){
+            return callback+"("+JsonUtils.objectToJson(catjsonResult)+");";
+        }
+        return JsonUtils.objectToJson(catjsonResult);
+    }
+
+
+
 }

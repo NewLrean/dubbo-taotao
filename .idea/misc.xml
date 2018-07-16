@@ -12,6 +12,8 @@
     <file type="web" url="file://$PROJECT_DIR$/taotao-rest/taotao-rest-service" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-search-web" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-search/taotao-search-service" />
+    <file type="web" url="file://$PROJECT_DIR$/taotao-sso-web" />
+    <file type="web" url="file://$PROJECT_DIR$/taotao-sso/taotao-sso-service" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-user-protal" />
   </component>
   <component name="MavenProjectsManager">
@@ -27,6 +29,8 @@
         <option value="$PROJECT_DIR$/taotao-rest/pom.xml" />
         <option value="$PROJECT_DIR$/taotao-item-web/pom.xml" />
         <option value="$PROJECT_DIR$/taotao-search-web/pom.xml" />
+        <option value="$PROJECT_DIR$/taotao-sso/pom.xml" />
+        <option value="$PROJECT_DIR$/taotao-sso-web/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

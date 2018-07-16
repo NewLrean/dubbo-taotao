@@ -58,6 +58,7 @@
 
         <!-- 设置别名包 -->
         <property name="typeAliasesPackage" value="com.taotao.mapper"></property>
+
         <property name="plugins">
 
                 <bean class="com.github.pagehelper.PageInterceptor">
@@ -72,7 +73,6 @@
                         </value>
                     </property>
                 </bean>
-
         </property>
 
     </bean>

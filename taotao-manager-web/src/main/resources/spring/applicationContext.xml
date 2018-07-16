@@ -18,7 +18,7 @@
 
 
     <!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
-    <context:component-scan base-package="com.taotao.controller"/>
+    <context:component-scan base-package="com.taotao"/>
 
     <!-- 默认的注解映射的支持 默认找最新的处理器映射器，处理器适配器 -->
     <mvc:annotation-driven />
@@ -28,7 +28,7 @@
     <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀    controller方法返回值+.jsp-->
 
     <!-- <mvc:annotation-driven conversion-service="conversionService"/> -->
-
+    <context:property-placeholder location="classpath:resource/*.properties"/>
 		
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -81,6 +81,14 @@
         <!--&lt;!&ndash; 内存中的最大值 &ndash;&gt;-->
         <property name="maxInMemorySize" value="40960" />
     </bean>
+
+
+  <!--  <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.taotao.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>-->
 
 
     <dubbo:application name="taotao-manager"/>

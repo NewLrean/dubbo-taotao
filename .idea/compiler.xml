@@ -23,6 +23,9 @@
         <module name="taotao-search-mapper" />
         <module name="taotao-search-service" />
         <module name="taotao-search-web" />
+        <module name="taotao-sso-interface" />
+        <module name="taotao-sso-service" />
+        <module name="taotao-sso-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -53,6 +56,10 @@
       <module name="taotao-search-mapper" target="1.8" />
       <module name="taotao-search-service" target="1.8" />
       <module name="taotao-search-web" target="1.8" />
+      <module name="taotao-sso" target="1.8" />
+      <module name="taotao-sso-interface" target="1.8" />
+      <module name="taotao-sso-service" target="1.8" />
+      <module name="taotao-sso-web" target="1.8" />
       <module name="taotao-user-protal" target="1.8" />
       <module name="taotaocontent" target="1.8" />
     </bytecodeTargetLevel>
