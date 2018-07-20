@@ -65,7 +65,7 @@ public class UserController {
     private String ToLogOut(HttpServletRequest request,HttpServletResponse response){
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie:cookies){
-            if("COOKIE_TOKEN_KEY".equals(cookie.getName())){
+            if(COOKIE_TOKEN_KEY.equals(cookie.getName())){
                 cookie.setValue(null);
                 cookie.setMaxAge(0);// 立即销毁cookie
                 cookie.setPath("/");

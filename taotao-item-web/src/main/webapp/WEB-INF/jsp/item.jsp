@@ -135,7 +135,7 @@
 		        <li id="choose-result"><div class="dt"></div><div class="dd"></div></li>
 				<li id="choose-btns">
 					<div id="choose-btn-append"  class="btn">
-							<a class="btn-append " id="InitCartUrl" href="/cart/add/${item.id}.html" clstag="shangpin|keycount|product|initcarturl">加入购物车<b></b></a>
+							<a class="btn-append " id="InitCartUrl" href="javascript:toCart()" clstag="shangpin|keycount|product|initcarturl">加入购物车<b></b></a>
 					</div>
 					<div id="choose-btn-easybuy" class="btn"></div>
 					<div id="choose-btn-divide" class="btn"></div>
@@ -259,6 +259,11 @@
 <script type="text/javascript" src="/js/product.js"></script>
 <script type="text/javascript" src="/js/iplocation_server.js"></script>
 <script type="text/javascript">
+
+	function toCart() {
+		location.href="http://localhost:9009/cart/add/${item.id}.html?num="+$("#buy-num").val();
+    }
+
 	var itemControl = {
 			param:{
 				descUrl:"/item/desc/",

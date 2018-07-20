@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.taotao.mapper.TbOrderMapper" >
-  
+  <insert id="insertOrder" parameterType="com.taotao.pojo.TbOrder">
+      INSERT INTO tb_order(orderId,payment,paymentType,postFee,status,createTime,
+      updateTime,paymentTime,consignTime,endTime,closeTime,shippingName,shippingCode,
+      userId,buyer_message,buyer_nick,buyer_rate) VALUE (#{orderid},#{payment},#{paymenttype},
+    #{postfee},#{status},#{createtime},#{updatetime},#{paymenttime},#{consigntime},#{endtime},
+    #{closetime},#{shippingname},#{shippingcode},#{userid},#{buyerMessage},#{buyerNick},#{buyerRate})
+  </insert>
 </mapper>

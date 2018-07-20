@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/taoato-cart-web" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-common/taotao-manager-web" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-content/taotao-content-service" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-content/taotao-content-services" />
@@ -8,6 +9,9 @@
     <file type="web" url="file://$PROJECT_DIR$/taotao-manager-web" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-manager/taotao-manager-service" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-manager/taotao-manager-services" />
+    <file type="web" url="file://$PROJECT_DIR$/taotao-order-web" />
+    <file type="web" url="file://$PROJECT_DIR$/taotao-order-webs" />
+    <file type="web" url="file://$PROJECT_DIR$/taotao-order/taotao-order-service" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-portal-web" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-rest/taotao-rest-service" />
     <file type="web" url="file://$PROJECT_DIR$/taotao-search-web" />
@@ -31,6 +35,8 @@
         <option value="$PROJECT_DIR$/taotao-search-web/pom.xml" />
         <option value="$PROJECT_DIR$/taotao-sso/pom.xml" />
         <option value="$PROJECT_DIR$/taotao-sso-web/pom.xml" />
+        <option value="$PROJECT_DIR$/taoato-cart-web/pom.xml" />
+        <option value="$PROJECT_DIR$/taotao-order-webs/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

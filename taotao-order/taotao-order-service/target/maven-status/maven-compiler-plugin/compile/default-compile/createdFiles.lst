@@ -1,0 +1,5 @@
+com\taotao\order\service\impl\OrderServiceImpl.class
+com\taotao\order\redis\JedisClientCluster.class
+com\taotao\aspectLog\order\MyAspect\MyAspect.class
+com\taotao\order\redis\JedisClient.class
+com\taotao\order\redis\JedisClientPool.class

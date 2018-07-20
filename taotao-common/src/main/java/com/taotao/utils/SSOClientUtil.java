@@ -28,8 +28,7 @@ public class SSOClientUtil extends HttpServlet {
      * @param SERVER_URL  想要访问的路径
      * @throws IOException
      */
-    public static void redirectTSSOURL(HttpServletRequest request, HttpServletResponse response,String URL,String SERVER_URL) throws IOException {
-        String redirectURL = getRedirectURL(request, URL);
+    public static void redirectTSSOURL(HttpServletResponse response,String redirectURL,String SERVER_URL) throws IOException {
         StringBuffer buffer=new StringBuffer();
         buffer.append(SERVER_URL).append("/checkLogin?redirectUrl=")
                 .append(redirectURL);

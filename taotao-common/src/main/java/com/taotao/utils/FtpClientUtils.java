@@ -38,7 +38,9 @@ public class FtpClientUtils {
 		
 		//指定服务器路径
 		ftpclient.changeWorkingDirectory(path);
-		
+		ftpclient.enterRemotePassiveMode();
+		ftpclient.setBufferSize(1024);
+		ftpclient.setControlEncoding("utf-8");
 		ftpclient.setFileType(FTP.BINARY_FILE_TYPE);
 		//上传文件  参数一：文件名  ，参数二：读文件的流
 		if(!ftpclient.storeFile(fileName, is)){

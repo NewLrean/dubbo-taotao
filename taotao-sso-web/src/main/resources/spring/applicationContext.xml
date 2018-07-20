@@ -35,8 +35,10 @@
         <property name="suffix" value=".jsp"></property>
         
     </bean>
-    
-    	<!--<mvc:resources location="/WEB-INF/jsp/" mapping="/jsp/**"/>-->
+
+
+    	<mvc:resources location="/WEB-INF/jsp/" mapping="/jsp/**"/>
+
    <!--  <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <property name="converters">
             <set>

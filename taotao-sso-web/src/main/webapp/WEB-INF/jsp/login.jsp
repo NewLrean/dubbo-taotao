@@ -60,7 +60,7 @@
     </div>
 </form>
 <script type="text/javascript">
-
+    var redirectUrl = "${redirect}";
 
 	var LOGIN = {
 			checkInput:function() {
@@ -78,7 +78,7 @@
 			},
 			doLogin:function() {
 				$.post("/user/login", $("#formlogin").serialize(),function(data){
-                    var redirectUrl = "${redirect}";
+
 					if (data.status == 200) {
 						alert("登录成功！");
 						if (redirectUrl == "") {
