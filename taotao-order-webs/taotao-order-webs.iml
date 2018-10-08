@@ -9,9 +9,6 @@
         <webroots>
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src/main/java" />
-        </sourceRoots>
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
@@ -28,6 +25,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="taotao-order-interface" />
+    <orderEntry type="module" module-name="taotao-manager-pojo" />
+    <orderEntry type="module" module-name="taotao-manager-interface" />
+    <orderEntry type="library" name="Maven: commons-io:commons-io:2.2" level="project" />
     <orderEntry type="module" module-name="taotao-order-interface" />
     <orderEntry type="module" module-name="taotao-manager-pojo" />
     <orderEntry type="module" module-name="taotao-common" />

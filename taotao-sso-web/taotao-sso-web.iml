@@ -25,6 +25,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="taotao-manager-pojo" />
     <orderEntry type="module" module-name="taotao-sso-interface" />
     <orderEntry type="module" module-name="taotao-manager-pojo" />
     <orderEntry type="module" module-name="taotao-common" />
